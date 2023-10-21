@@ -1,0 +1,13 @@
+{
+    "canisters": {
+        "icp_goggle_store": {
+            "type": "custom",
+            "build": "npx azle icp_goggle_store",
+            "root": "src",
+            "ts": "src/index.ts",
+            "candid": "src/index.did",
+            "wasm": ".azle/icp_goggle_store/icp_goggle_store.wasm.gz"
+        }
+    }
+}
+
