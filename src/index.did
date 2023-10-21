@@ -19,11 +19,11 @@ type GogglePayload = record {
 };
 type GoggleStore = record {
   id : text;
+  goggleIds : vec text;
   owner : principal;
   name : text;
   createdAt : nat64;
   updatedAt : opt nat64;
-  goggles : vec Goggle;
   image : text;
   location : text;
 };
@@ -32,13 +32,13 @@ type _AzleResult = variant { Ok : Goggle; Err : text };
 type _AzleResult_1 = variant { Ok : GoggleStore; Err : text };
 type _AzleResult_2 = variant { Ok : vec Goggle; Err : text };
 service : () -> {
-  createGoggle : (GogglePayload) -> (_AzleResult);
+  createGoggle : (text, GogglePayload) -> (_AzleResult);
   createGoggleStore : (GoggleStorePayload) -> (_AzleResult_1);
   deleteGoggle : (text) -> (_AzleResult);
   deleteGoggleStore : (text) -> (_AzleResult_1);
   getAllGoggles : () -> (_AzleResult_2) query;
-  getGoggle : (text) -> (_AzleResult) query;
-  getGoggleStore : (text) -> (_AzleResult_1) query;
+  getGoggleById : (text) -> (_AzleResult) query;
+  getGoggleStoreById : (text) -> (_AzleResult_1) query;
   updateGoggle : (text, GogglePayload) -> (_AzleResult);
   updateGoggleStore : (text, GoggleStorePayload) -> (_AzleResult_1);
 }
